@@ -1,14 +1,19 @@
 import React, { Component } from "react"
+import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
+
 import "./App.css"
+import priceCard from "./containers/price-card";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <h2>Welcome to React re-ducks</h2>
-        </div>
-      </div>
+      <BrowserRouter>
+        <Switch>
+          <Redirect exact from="/" to="/agencies" />
+          <Route exact path="/agencies/:agency?" component={priceCard} />
+          <Route path="/agencies/:agency/category?/:category?" component={priceCard} />
+        </Switch>
+      </BrowserRouter>
     )
   }
 }
