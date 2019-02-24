@@ -16,8 +16,22 @@ const categoriesReducer = (state = [], action) => {
     }
 }
 
+const fetchingReducer = (state = [], action) => {
+    switch (action.type) {
+        case types.FETCH_FAILED:
+        case types.FETCH_SUCCEEDED:
+            return false
+        case types.FETCH_REQUESTED:
+            return true
+        default:
+            return state
+    }
+}
+
+
 const reducer = combineReducers({
-    categories: categoriesReducer
+    categories: categoriesReducer,
+    fetching: fetchingReducer,
 })
 
 export default reducer

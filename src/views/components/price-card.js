@@ -1,6 +1,7 @@
 import Card from '../components/card'
 import React from 'react'
 import Selector from '../components/selector'
+import Loader from './loader';
 
 class PriceCard extends React.Component {
     constructor (...args) {
@@ -20,6 +21,7 @@ class PriceCard extends React.Component {
     }
 
     handleAgenciesChange (value) {
+        this.props.fetchCategoriesAction(value)
         this.setState({
             agency: value
         }, () => this.props.history.replace(`/prices/${this.state.agency}`))
@@ -32,6 +34,15 @@ class PriceCard extends React.Component {
     }
 
     render () {
+        if (this.props.agenciesFetching) {
+            return (
+                <Card>
+                    <div className="d-flex justify-content-center">
+                        <Loader></Loader>
+                    </div>
+                </Card>
+            )
+        }
         return (
             <Card>
                 <Selector

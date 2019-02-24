@@ -12,12 +12,25 @@ const agenciesReducer = (state = [], action) => {
     switch (action.type) {
         case types.FETCH_SUCCEEDED:
             return [...state, ...action.payload.agencies]
-        default: return state
+        default:
+            return state
+    }
+}
+const fetchingReducer = (state = [], action) => {
+    switch (action.type) {
+        case types.FETCH_FAILED:
+        case types.FETCH_SUCCEEDED:
+            return false
+        case types.FETCH_REQUESTED:
+            return true
+        default: 
+            return state
     }
 }
 
 const reducer = combineReducers({
-    agencies: agenciesReducer
+    agencies: agenciesReducer,
+    fetching: fetchingReducer,
 })
 
 export default reducer
