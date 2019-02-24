@@ -4,3 +4,4 @@ export default async (
 ) => ApiBase({
     path: `../agencies/${payload.agencyId}/categories/${payload.categoryId}/prices`,
 })
+

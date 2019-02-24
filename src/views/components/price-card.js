@@ -21,6 +21,7 @@ class PriceCard extends React.Component {
 
     handleCategoriesChange (value) {
         this.props.selectCategoryAction({ categoryId: value })
+        this.props.fetchPricesAction({ categoryId: value, agencyId: this.props.agency })
     }
 
     render () {
