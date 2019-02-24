@@ -1,11 +1,10 @@
 import PriceCard from '../components/price-card'
-// import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { agenciesActions } from '../../state/ducks/agencies';
 
 const mapStateToProps = (state, ownProps) => ({
-    agencies: state.agencies
+    agencies: state.agenciesState.agencies
 })
 
 const mapDispatchToProps = {

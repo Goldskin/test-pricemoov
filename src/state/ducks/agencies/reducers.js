@@ -11,7 +11,7 @@ import * as types from "./types"
 const agenciesReducer = (state = [], action) => {
     switch (action.type) {
         case types.FETCH_SUCCEEDED:
-            return [...state, action.payload.agencies]
+            return [...state, ...action.payload.agencies]
         default: return state
     }
 }
