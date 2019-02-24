@@ -4,7 +4,7 @@ import { fetchAgencies } from '../../../api'
 // worker Saga: will be fired on types.FETCH_REQUESTED actions
 function* fetchAgenciesSaga (action) {
     try {
-        const agencies = yield call(fetchAgencies, action.payload.agencyId)
+        const agencies = yield call(fetchAgencies, action.payload)
         yield put({ type: types.FETCH_SUCCEEDED, payload: { agencies } })
         yield put(dispatch => action.meta.resolve({dispatch, payload: {agencies}}))
     } catch (e) {

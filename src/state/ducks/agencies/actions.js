@@ -8,7 +8,7 @@ HINT: Always use functions for consistency, don't export plain objects
 import * as types from "./types"
 
 export const fetchAgenciesAction = (
-    payload = { agencyId: null },
+    payload = {},
     meta = { resolve: () => { }, reject: () => { } }
 ) => dispatch => dispatch({
     type: types.FETCH_REQUESTED,

@@ -1,10 +1,10 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
 import * as types from './types'
-import { fetchCategories } from '../../../api'
+import { fetchPrices } from '../../../api'
 // worker Saga: will be fired on types.FETCH_REQUESTED actions
-function* fetchCategoriesSaga (action) {
+function* fetchPricesSaga (action) {
     try {
-        const categories = yield call(fetchCategories, action.payload)
+        const categories = yield call(fetchPrices, action.payload)
         yield put({ type: types.FETCH_SUCCEEDED, payload: { categories } })
         yield put(dispatch => action.meta.resolve({ dispatch, payload: { categories } }))
     } catch (e) {
@@ -18,7 +18,7 @@ function* fetchCategoriesSaga (action) {
   Allows concurrent fetches of user.
 */
 function* categoriesSaga () {
-    yield takeEvery(types.FETCH_REQUESTED, fetchCategoriesSaga)
+    yield takeEvery(types.FETCH_REQUESTED, fetchPricesSaga)
 }
 
 export { categoriesSaga }
