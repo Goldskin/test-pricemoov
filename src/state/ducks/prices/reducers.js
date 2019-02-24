@@ -8,17 +8,15 @@ Based on the state shape, multiple reducers might be defined in this file, combi
 import { combineReducers } from "redux"
 import * as types from "./types"
 
-const rehydrate = (state, incoming) => {
-    return [
-        ...state.filter(stateItem => !incoming.find(newCat => newCat.id === stateItem.id)),
-        ...incoming,
-    ]
-}
+const rehydrate = (state, incoming) => ([
+    ...state.filter(stateItem => !incoming.find(newPrice => newPrice.id === stateItem.id)),
+    ...incoming,
+])
 
 const pricesReducer = (state = [], action) => {
     switch (action.type) {
         case types.FETCH_SUCCEEDED:
-            return rehydrate(state, action.payload.categories)
+            return rehydrate(state, action.payload.prices)
         default:
             return state
     }

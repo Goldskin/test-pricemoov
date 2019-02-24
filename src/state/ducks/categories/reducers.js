@@ -8,12 +8,10 @@ Based on the state shape, multiple reducers might be defined in this file, combi
 import { combineReducers } from "redux"
 import * as types from "./types"
 
-const rehydrate = (state, incoming) => {
-    return [
-        ...state.filter(stateItem => !incoming.find(newCat => newCat.id === stateItem.id)),
-        ...incoming,
-    ]
-}
+const rehydrate = (state, incoming) => ([
+    ...state.filter(stateItem => !incoming.find(newCat => newCat.id === stateItem.id)),
+    ...incoming,
+])
 
 const selectedCategoriesReducer = (state = null, action) => {
     switch (action.type) {

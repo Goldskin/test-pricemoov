@@ -6,11 +6,11 @@ These functions make sense when you have a more complex app state.
 
 */
 
-const getPrice = (categories, categoryId) =>
-    categories.find(category => category.id === categoryId)
+const getPrice = (prices, priceId) =>
+    prices.find(price => price.id === priceId)
 
 const getPricesByCategories = (prices, categoryId) =>
-    prices.filter(category => category.categoryId === categoryId)
+    prices.filter(price => price.categoryId === categoryId)
 
 export {
     getPrice,
