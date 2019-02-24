@@ -7,18 +7,11 @@ HINT: Always use functions for consistency, don't export plain objects
 
 import * as types from "./types"
 
-const quack = ( ) => ( {
-    type: types.QUACK
-} )
-
-const swim = ( distance ) => ( {
-    type: types.SWIM,
+export const fetchAgenciesAction = (agencyId = null) => (dispatch, getState) => dispatch({
+    type: types.FETCH_REQUESTED,
     payload: {
-        distance
+        agencyId
     }
-} )
+})
 
-export {
-    swim,
-    quack
-}
+export {}

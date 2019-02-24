@@ -4,10 +4,12 @@ You can use any convention you wish here, but the name should remain UPPER_SNAKE
 
 */
 
-const QUACK = "app/duck/QUACK"
-const SWIM = "app/duck/SWIM"
+const FETCH_SUCCEEDED = "app/agencies/FETCH_SUCCEEDED"
+const FETCH_FAILED = "app/agencies/FETCH_FAILED"
+const FETCH_REQUESTED = "app/agencies/FETCH_REQUESTED"
 
 export {
-    QUACK,
-    SWIM
+    FETCH_SUCCEEDED,
+    FETCH_FAILED,
+    FETCH_REQUESTED
 }

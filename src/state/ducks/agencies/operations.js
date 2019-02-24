@@ -8,16 +8,16 @@ Complex operations involve returning a thunk that dispatches multiple actions in
 
 import * as actions from "./actions"
 
-const simpleQuack = actions.quack
+// const simpleQuack = actions.quack
 
-const complexQuack = ( distance ) => ( dispatch ) => {
-    dispatch( actions.quack( ) ).then( ( ) => {
-        dispatch( actions.swim( distance ) )
-        dispatch( /* any action */ )
-    } )
-}
+// const complexQuack = (distance) => (dispatch) => {
+//     dispatch(actions.quack()).then(() => {
+//         dispatch(actions.swim(distance))
+//         dispatch( /* any action */)
+//     })
+// }
 
 export {
-    simpleQuack,
-    complexQuack
+    // simpleQuack,
+    // complexQuack
 }

@@ -8,32 +8,16 @@ Based on the state shape, multiple reducers might be defined in this file, combi
 import { combineReducers } from "redux"
 import * as types from "./types"
 
-/* State Shape
-{
-    quacking: bool,
-    distance: number
-}
-*/
-
-const quackReducer = ( state = false, action ) => {
-    switch( action.type ) {
-        case types.QUACK: return true
-        /* ... */
+const agenciesReducer = (state = [], action) => {
+    switch (action.type) {
+        case types.FETCH_SUCCEEDED:
+            return [...state, action.payload.agencies]
         default: return state
     }
 }
 
-const distanceReducer = ( state = 0, action ) => {
-    switch( action.type ) {
-        case types.SWIM: return state + action.payload.distance
-        /* ... */
-        default: return state
-    }
-}
-
-const reducer = combineReducers( {
-    quacking: quackReducer,
-    distance: distanceReducer
-} )
+const reducer = combineReducers({
+    agencies: agenciesReducer
+})
 
 export default reducer

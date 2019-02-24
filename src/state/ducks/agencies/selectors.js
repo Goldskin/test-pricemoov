@@ -6,11 +6,8 @@ These functions make sense when you have a more complex app state.
 
 */
 
-function checkIfDuckIsInRange( state ) {
-    return state.duck.distance > 1000
-}
+// function checkIfDuckIsInRange (state) {
+//     return state.agencies.distance > 1000
+// }
 
-export {
-    checkIfDuckIsInRange
-}
-
+export {}

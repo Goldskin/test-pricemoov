@@ -9,9 +9,8 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Redirect exact from="/" to="/agencies" />
-          <Route exact path="/agencies/:agency?" component={priceCard} />
-          <Route path="/agencies/:agency/category?/:category?" component={priceCard} />
+          <Redirect exact from="/" to="/prices" />
+          <Route exact path="/prices/:agency?/:category?" component={priceCard} />
         </Switch>
       </BrowserRouter>
     )

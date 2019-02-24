@@ -9,7 +9,9 @@ const reduxStore = configureStore(window.REDUX_INITIAL_DATA)
 
 ReactDOM.render(
   <ReduxProvider store={reduxStore}>
-    <App />
+    <div className="container d-flex justify-content-center align-items-center">
+      <App />
+    </div>
   </ReduxProvider>,
   document.getElementById("root")
 )
