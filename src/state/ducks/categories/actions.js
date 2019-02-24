@@ -7,9 +7,10 @@ HINT: Always use functions for consistency, don't export plain objects
 
 import * as types from "./types"
 
-export const fetchAgenciesAction = (agencyId = null) => dispatch => dispatch({
+export const fetchCategoriesAction = (agencyId, categoryId = null) => dispatch => dispatch({
     type: types.FETCH_REQUESTED,
     payload: {
-        agencyId
+        agencyId,
+        categoryId,
     }
 })

@@ -1,6 +1,6 @@
 import Card from '../components/card'
 import React from 'react'
-import Selector from '../components/selector';
+import Selector from '../components/selector'
 
 class PriceCard extends React.Component {
     constructor (...args) {

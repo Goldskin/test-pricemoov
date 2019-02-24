@@ -9,18 +9,18 @@ Optionally it exports the actions and types if they are needed in other ducks.
 
 import reducer from "./reducers"
 
-import * as agenciesSelectors from "./selectors"
-import * as agenciesOperations from "./operations"
-import * as agenciesActions from "./actions"
-import * as agenciesType from "./types"
-import { agenciesSaga } from "./saga"
+import * as categoriesSelectors from "./selectors"
+import * as categoriesOperations from "./operations"
+import * as categoriesActions from "./actions"
+import * as categoriesType from "./types"
+import { categoriesSaga } from "./saga"
 
 export {
-    agenciesSelectors,
-    agenciesOperations,
-    agenciesActions,
-    agenciesType,
-    agenciesSaga,
+    categoriesSelectors,
+    categoriesOperations,
+    categoriesActions,
+    categoriesType,
+    categoriesSaga,
 }
 
 export default reducer
