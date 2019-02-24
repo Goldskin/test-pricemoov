@@ -7,17 +7,19 @@ Complex operations involve returning a thunk that dispatches multiple actions in
 */
 
 import * as actions from "./actions"
+import { categoriesActions } from "../categories"
 
 // const simpleQuack = actions.quack
 
-// const complexQuack = (distance) => (dispatch) => {
-//     dispatch(actions.quack()).then(() => {
-//         dispatch(actions.swim(distance))
-//         dispatch( /* any action */)
-//     })
-// }
+const fetchAgencyAndCategories = () => dispatch => {
+    new Promise((resolve, reject) =>  actions.fetchAgenciesAction({}, { resolve, reject })(dispatch))
+        .then(({ dispatch, payload }) => new Promise((resolve, reject) => {
+            actions.selectAgencyAction({ agencyId: payload.agencies[0].id })(dispatch)
+            categoriesActions.fetchCategoriesAction({ agencyId: payload.agencies[0].id }, { resolve, reject })(dispatch)
+        }))
+        .then(({ dispatch, payload }) => categoriesActions.selectCategoryAction({ categoryId: payload.categories[0].id })(dispatch))
+}
 
 export {
-    // simpleQuack,
-    // complexQuack
+    fetchAgencyAndCategories
 }

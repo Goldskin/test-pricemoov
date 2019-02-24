@@ -1,7 +1,6 @@
 import PriceCard from '../components/price-card'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
-import { agenciesActions } from '../../state/ducks/agencies'
+import { agenciesActions, agenciesOperations } from '../../state/ducks/agencies'
 import { categoriesActions, categoriesSelectors } from '../../state/ducks/categories'
 
 const mapStateToProps = (state, ownProps) => ({
@@ -21,6 +20,7 @@ const mapDispatchToProps = {
     selectAgencyAction: agenciesActions.selectAgencyAction,
     fetchCategoriesAction: categoriesActions.fetchCategoriesAction,
     selectCategoryAction: categoriesActions.selectCategoryAction,
+    init: agenciesOperations.fetchAgencyAndCategories
 }
 
 export default connect(

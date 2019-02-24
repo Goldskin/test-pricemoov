@@ -14,7 +14,9 @@ export default function configureStore(initialState = {}) {
 
   const middlewares = [promise, thunk, sagaMiddleware]
   if (process.env.NODE_ENV !== 'production') {
-    middlewares.push(createLogger())
+    middlewares.push(createLogger({
+      collapsed: true
+    }))
   }
 
   const enhancer = composeEnhancers(

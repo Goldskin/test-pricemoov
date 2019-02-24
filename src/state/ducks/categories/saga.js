@@ -6,8 +6,10 @@ function* fetchCategoriesSaga (action) {
     try {
         const categories = yield call(fetchCategories, action.payload.agencyId, action.payload.categoryId)
         yield put({ type: types.FETCH_SUCCEEDED, payload: { categories } })
+        yield put(dispatch => action.meta.resolve({ dispatch, payload: { categories } }))
     } catch (e) {
         yield put({ type: types.FETCH_FAILED, message: e.message })
+        yield put(action.meta.reject)
     }
 }
 
