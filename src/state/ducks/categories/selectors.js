@@ -6,11 +6,11 @@ These functions make sense when you have a more complex app state.
 
 */
 
-const getCategory = (state, categoryId) =>
-    state.categories.find(category => category.id === categoryId)
+const getCategory = (categories, categoryId) =>
+    categories.find(category => category.id === categoryId)
 
-const getCategoriesByAgency = (state, agencyId) =>
-    state.categories.filter(category => category.agencyId === agencyId)
+const getCategoriesByAgency = (categories, agencyId) =>
+    categories.filter(category => category.agencyId === agencyId)
 
 export {
     getCategory,

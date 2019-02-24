@@ -4,11 +4,6 @@ import Selector from '../components/selector'
 import Loader from './loader';
 
 class PriceCard extends React.Component {
-    constructor (...args) {
-        super(...args)
-        this.state = { ...this.props.match.params}
-    }
-
     getOption (agencies) {
         return agencies.map(agency => ({
             name: agency.name,
@@ -22,15 +17,11 @@ class PriceCard extends React.Component {
 
     handleAgenciesChange (value) {
         this.props.fetchCategoriesAction(value)
-        this.setState({
-            agency: value
-        }, () => this.props.history.replace(`/prices/${this.state.agency}`))
+        this.props.selectAgencyAction(value)
     }
 
     handleCategoriesChange (value) {
-        this.setState({
-            category: value
-        }, () => this.props.history.replace(`/prices/${this.state.agency}/${this.state.category}`))
+        this.props.selectCategoryAction(value)
     }
 
     render () {
@@ -47,16 +38,16 @@ class PriceCard extends React.Component {
             <Card>
                 <Selector
                     title="Agences"
-                    value={this.state.agency}
+                    value={this.props.agency}
                     onChange={(value) => this.handleAgenciesChange(value)}
                     options={this.getOption(this.props.agencies)}
                 />
-                {/* <Selector
+                <Selector
                     title="Categories"
-                    value={this.state.category}
+                    value={this.props.category}
                     onChange={(value) => this.handleCategoriesChange(value)}
-                    options={this.getOption()}
-                /> */}
+                    options={this.getOption(this.props.categories)}
+                />
             </Card>
         )
     }

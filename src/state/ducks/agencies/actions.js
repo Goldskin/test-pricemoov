@@ -13,3 +13,10 @@ export const fetchAgenciesAction = (agencyId = null) => dispatch => dispatch({
         agencyId
     }
 })
+
+export const selectAgencyAction = agencyId => dispatch => dispatch({
+    type: types.SELECTED,
+    payload: {
+        agencyId
+    }
+})

@@ -1,4 +1,4 @@
 import ApiBase from './base'
-export default (id = null) => ApiBase({
+export default async (id = null) => ApiBase({
     path: `../agencies/${id === null ? '' : id}`,
 })

@@ -6,8 +6,8 @@ These functions make sense when you have a more complex app state.
 
 */
 
-const getAgency = (state, agencyId) =>
-    state.categories.find(category => category.id === agencyId)
+const getAgency = (categories, agencyId) =>
+    categories.find(category => category.id === agencyId)
 
 export {
     getAgency,

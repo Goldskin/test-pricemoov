@@ -15,6 +15,17 @@ const rehydrate = (state, incoming) => {
     ]
 }
 
+const selectedAgencyReducer = (state = null, action) => {
+    switch (action.type) {
+        case types.SELECTED:
+            return action.payload.agencyId
+        case types.UNSELECTED:
+            return null
+        default:
+            return state
+    }
+}
+
 const agenciesReducer = (state = [], action) => {
     switch (action.type) {
         case types.FETCH_SUCCEEDED:
@@ -39,6 +50,7 @@ const fetchingReducer = (state = false, action) => {
 const reducer = combineReducers({
     agencies: agenciesReducer,
     fetching: fetchingReducer,
+    selected: selectedAgencyReducer,
 })
 
 export default reducer

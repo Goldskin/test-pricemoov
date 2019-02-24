@@ -7,9 +7,13 @@ You can use any convention you wish here, but the name should remain UPPER_SNAKE
 const FETCH_SUCCEEDED = "app/categories/FETCH_SUCCEEDED"
 const FETCH_FAILED = "app/categories/FETCH_FAILED"
 const FETCH_REQUESTED = "app/categories/FETCH_REQUESTED"
+const SELECTED = "app/categories/SELECTED"
+const UNSELECTED = "app/categories/UNSELECTED"
 
 export {
     FETCH_SUCCEEDED,
     FETCH_FAILED,
-    FETCH_REQUESTED
+    FETCH_REQUESTED,
+    SELECTED,
+    UNSELECTED,
 }

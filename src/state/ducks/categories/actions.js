@@ -14,3 +14,10 @@ export const fetchCategoriesAction = (agencyId, categoryId = null) => dispatch =
         categoryId,
     }
 })
+
+export const selectCategoryAction = categoryId => dispatch => dispatch({
+    type: types.SELECTED,
+    payload: {
+        categoryId,
+    }
+})

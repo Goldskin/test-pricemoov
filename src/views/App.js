@@ -10,7 +10,7 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <Redirect exact from="/" to="/prices" />
-          <Route exact path="/prices/:agency?/:category?" component={priceCard} />
+          <Route exact path="/prices" component={priceCard} />
         </Switch>
       </BrowserRouter>
     )
