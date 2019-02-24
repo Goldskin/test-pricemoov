@@ -1,6 +1,7 @@
 import Card from '../components/card'
 import React from 'react'
 import Selector from '../components/selector'
+import Table from '../components/table'
 
 class PriceCard extends React.Component {
     getOption (options) {
@@ -41,6 +42,9 @@ class PriceCard extends React.Component {
                     onChange={(value) => this.handleCategoriesChange(value)}
                     options={this.getOption(this.props.categories)}
                 />
+                <Table
+                    rows={this.props.prices}
+                    />
             </Card>
         )
     }
