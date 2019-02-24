@@ -3,7 +3,6 @@ import * as types from './types'
 import { fetchCategories } from '../../../api'
 // worker Saga: will be fired on types.FETCH_REQUESTED actions
 function* fetchCategoriesSaga (action) {
-    console.log('action', action)
     try {
         const categories = yield call(fetchCategories, action.payload.agencyId, action.payload.categoryId)
         yield put({ type: types.FETCH_SUCCEEDED, payload: { categories } })

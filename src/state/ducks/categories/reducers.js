@@ -8,15 +8,23 @@ Based on the state shape, multiple reducers might be defined in this file, combi
 import { combineReducers } from "redux"
 import * as types from "./types"
 
+const rehydrate = (state, incoming) => {
+    return [
+        ...state.filter(stateItem => !incoming.find(newCat => newCat.id === stateItem.id)),
+        ...incoming,
+    ]
+}
+
 const categoriesReducer = (state = [], action) => {
     switch (action.type) {
         case types.FETCH_SUCCEEDED:
-            return [...state, ...action.payload.categories]
-        default: return state
+            return rehydrate(state, action.payload.categories)
+        default:
+            return state
     }
 }
 
-const fetchingReducer = (state = [], action) => {
+const fetchingReducer = (state = false, action) => {
     switch (action.type) {
         case types.FETCH_FAILED:
         case types.FETCH_SUCCEEDED:
@@ -27,7 +35,6 @@ const fetchingReducer = (state = [], action) => {
             return state
     }
 }
-
 
 const reducer = combineReducers({
     categories: categoriesReducer,

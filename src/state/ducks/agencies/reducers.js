@@ -8,22 +8,30 @@ Based on the state shape, multiple reducers might be defined in this file, combi
 import { combineReducers } from "redux"
 import * as types from "./types"
 
+const rehydrate = (state, incoming) => {
+    return [
+        ...state.filter(stateItem => !incoming.find(newCat => newCat.id === stateItem.id)),
+        ...incoming,
+    ]
+}
+
 const agenciesReducer = (state = [], action) => {
     switch (action.type) {
         case types.FETCH_SUCCEEDED:
-            return [...state, ...action.payload.agencies]
+            return rehydrate(state, action.payload.agencies)
         default:
             return state
     }
 }
-const fetchingReducer = (state = [], action) => {
+
+const fetchingReducer = (state = false, action) => {
     switch (action.type) {
         case types.FETCH_FAILED:
         case types.FETCH_SUCCEEDED:
             return false
         case types.FETCH_REQUESTED:
             return true
-        default: 
+        default:
             return state
     }
 }

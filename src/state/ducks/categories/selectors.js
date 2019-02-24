@@ -6,8 +6,13 @@ These functions make sense when you have a more complex app state.
 
 */
 
-// function checkIfDuckIsInRange (state) {
-//     return state.agencies.distance > 1000
-// }
+const getCategory = (state, categoryId) =>
+    state.categories.find(category => category.id === categoryId)
 
-export {}
+const getCategoriesByAgency = (state, agencyId) =>
+    state.categories.filter(category => category.agencyId === agencyId)
+
+export {
+    getCategory,
+    getCategoriesByAgency,
+}
