@@ -15,14 +15,14 @@ class PriceCard extends React.Component {
         this.props.init()
     }
 
-    handleAgenciesChange (value) {
-        this.props.fetchCategoriesAction({ agencyId: value })
-        this.props.selectAgencyAction({ agencyId: value })
+    agenciesChange (agencyId) {
+        this.props.selectAgencyAction({ agencyId })
+        this.props.fetchCategoriesAndPrices({ agencyId })
     }
 
-    handleCategoriesChange (value) {
-        this.props.selectCategoryAction({ categoryId: value })
-        this.props.fetchPricesAction({ categoryId: value, agencyId: this.props.agency })
+    categoriesChange (categoryId) {
+        this.props.selectCategoryAction({ categoryId })
+        this.props.fetchPricesAction({ categoryId, agencyId: this.props.agency })
     }
 
     render () {
@@ -32,19 +32,19 @@ class PriceCard extends React.Component {
                     loading={this.props.agenciesFetching}
                     title="Agences"
                     value={this.props.agency}
-                    onChange={(value) => this.handleAgenciesChange(value)}
+                    onChange={(value) => this.agenciesChange(value)}
                     options={this.getOption(this.props.agencies)}
                 />
                 <Selector
                     loading={this.props.categoriesFetching}
                     title="Categories"
                     value={this.props.category}
-                    onChange={(value) => this.handleCategoriesChange(value)}
+                    onChange={(value) => this.categoriesChange(value)}
                     options={this.getOption(this.props.categories)}
                 />
                 <Table
                     rows={this.props.prices}
-                    />
+                />
             </Card>
         )
     }
