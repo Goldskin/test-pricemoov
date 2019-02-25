@@ -2,6 +2,7 @@ import Card from '../components/card'
 import React from 'react'
 import Selector from '../components/selector'
 import Table from '../components/table'
+import moment from 'moment'
 
 class PriceCard extends React.Component {
     getOption (options) {
@@ -25,6 +26,19 @@ class PriceCard extends React.Component {
         this.props.fetchPricesAction({ categoryId, agencyId: this.props.agency })
     }
 
+    formatDate (date) {
+        return moment.unix(date).format('D/M/Y')
+    }
+
+    getRows () {
+        return this.props.prices.map(price => ([
+            { name: `${this.formatDate(price.startDate)}`, className: `td-black` },
+            { name: `Prix: ${price.price}€`, className: `` },
+            { name: `Prix suggéré: ${price.suggestedPrice}€`, className: `` },
+            { name: `isValid: ${price.isValidated ? 'Y' : 'N'}`, className: `` },
+        ]))
+    }
+
     render () {
         return (
             <Card>
@@ -44,7 +58,7 @@ class PriceCard extends React.Component {
                 />
                 <Table
                     loading={this.props.pricesFetching}
-                    rows={this.props.prices}
+                    rows={this.getRows()}
                 />
             </Card>
         )

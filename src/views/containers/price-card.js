@@ -4,7 +4,7 @@ import { agenciesActions, agenciesOperations } from '../../state/ducks/agencies'
 import { categoriesActions, categoriesSelectors, categoriesOperations } from '../../state/ducks/categories'
 import { pricesActions, pricesSelectors } from '../../state/ducks/prices'
 
-const categories = (state) => ({
+const categories = state => ({
     categories: categoriesSelectors.getCategoriesByAgency(
         state.categoriesState.categories,
         state.agenciesState.selected
@@ -13,13 +13,13 @@ const categories = (state) => ({
     category: state.categoriesState.selected,
 })
 
-const agencies = (state) => ({
+const agencies = state => ({
     agencies: state.agenciesState.agencies,
     agenciesFetching: state.agenciesState.fetching,
     agency: state.agenciesState.selected,
 })
 
-const prices = (state) => ({
+const prices = state => ({
     prices: pricesSelectors.getPricesByCategories(
         state.pricesState.prices,
         state.categoriesState.selected
@@ -28,7 +28,7 @@ const prices = (state) => ({
     price: state.pricesState.selected,
 })
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = state => ({
     ...agencies(state),
     ...categories(state),
     ...prices(state),

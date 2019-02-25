@@ -4,11 +4,11 @@ import Loader from './loader';
 export default class extends React.Component {
     getTables () {
         return (
-            <table>
+            <table className="table">
                 <tbody>
-                    {this.props.rows.map(row =>
-                        <tr key={row.id}>{Object.values(row).map((cell, index) => (
-                            <td key={index}>{cell}</td>
+                    {this.props.rows.map((row, index) =>
+                        <tr key={index}>{row.map((cell, index) => (
+                            <td className={cell.className} key={index}>{cell.name}</td>
                         ))}</tr>
                     )}
                 </tbody>
