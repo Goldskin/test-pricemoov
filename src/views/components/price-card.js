@@ -43,6 +43,7 @@ class PriceCard extends React.Component {
                     options={this.getOption(this.props.categories)}
                 />
                 <Table
+                    loading={this.props.pricesFetching}
                     rows={this.props.prices}
                 />
             </Card>
