@@ -20,12 +20,16 @@ const agencies = state => ({
 })
 
 const prices = state => ({
-    prices: pricesSelectors.getPricesByCategories(
-        state.pricesState.prices,
-        state.categoriesState.selected
+    prices: pricesSelectors.getPriceValidPrice(
+        pricesSelectors.getPricesByCategories(
+            state.pricesState.prices,
+            state.categoriesState.selected
+        ),
+        state.pricesState.displayValid
     ),
     pricesFetching: state.pricesState.fetching,
     price: state.pricesState.selected,
+    displayValid: state.pricesState.displayValid
 })
 
 const mapStateToProps = state => ({
@@ -41,7 +45,8 @@ const mapDispatchToProps = {
     fetchCategoriesAction: categoriesActions.fetchCategoriesAction,
     selectCategoryAction: categoriesActions.selectCategoryAction,
     init: agenciesOperations.fetchAgencyAndCategories,
-    fetchPricesAction: pricesActions.fetchPricesAction
+    fetchPricesAction: pricesActions.fetchPricesAction,
+    displayValidPrices: pricesActions.displayValidPrices
 }
 
 export default connect(

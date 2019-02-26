@@ -34,9 +34,19 @@ const fetchingReducer = (state = false, action) => {
     }
 }
 
+const displayValidReducer = (state = false, action) => {
+    switch (action.type) {
+        case types.DISPLAY_VALID:
+            return !state
+        default:
+            return state
+    }
+}
+
 const reducer = combineReducers({
     prices: pricesReducer,
     fetching: fetchingReducer,
+    displayValid: displayValidReducer,
 })
 
 export default reducer

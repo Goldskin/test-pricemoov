@@ -12,7 +12,13 @@ const getPrice = (prices, priceId) =>
 const getPricesByCategories = (prices, categoryId) =>
     prices.filter(price => price.categoryId === categoryId)
 
+const getPriceValidPrice = (prices, filter) =>
+    filter
+        ? prices.filter(price => price.isValidated === true)
+        : prices
+
 export {
     getPrice,
     getPricesByCategories,
+    getPriceValidPrice,
 }

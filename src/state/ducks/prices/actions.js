@@ -15,3 +15,12 @@ export const fetchPricesAction = (
     meta,
     payload: { agencyId: null, categoryId: null, ...payload },
 })
+
+export const displayValidPrices = (
+    payload = {},
+    meta = { resolve: () => { }, reject: () => { } }
+) => dispatch => dispatch({
+    type: types.DISPLAY_VALID,
+    meta,
+    payload,
+})

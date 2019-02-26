@@ -3,6 +3,7 @@ import React from 'react'
 import Selector from '../components/selector'
 import Table from '../components/table'
 import moment from 'moment'
+import Toggle from './Toggle';
 
 class PriceCard extends React.Component {
     getOption (options) {
@@ -60,6 +61,10 @@ class PriceCard extends React.Component {
                     loading={this.props.pricesFetching}
                     rows={this.getRows()}
                 />
+                <Toggle
+                    value={this.props.displayValid}
+                    onChange={() => this.props.displayValidPrices()}
+                ></Toggle>
             </Card>
         )
     }
