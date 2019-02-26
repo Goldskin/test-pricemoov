@@ -43,20 +43,24 @@ class PriceCard extends React.Component {
     render () {
         return (
             <Card>
-                <Selector
-                    loading={this.props.agenciesFetching}
-                    title="Agences"
-                    value={this.props.agency}
-                    onChange={(value) => this.agenciesChange(value)}
-                    options={this.getOption(this.props.agencies)}
-                />
-                <Selector
-                    loading={this.props.categoriesFetching}
-                    title="Categories"
-                    value={this.props.category}
-                    onChange={(value) => this.categoriesChange(value)}
-                    options={this.getOption(this.props.categories)}
-                />
+                <div className="mb-2">
+                    <Selector
+                        loading={this.props.agenciesFetching}
+                        title="Agences"
+                        value={this.props.agency}
+                        onChange={(value) => this.agenciesChange(value)}
+                        options={this.getOption(this.props.agencies)}
+                    />
+                </div>
+                <div className="mb-2">
+                    <Selector
+                        loading={this.props.categoriesFetching}
+                        title="Categories"
+                        value={this.props.category}
+                        onChange={(value) => this.categoriesChange(value)}
+                        options={this.getOption(this.props.categories)}
+                    />
+                </div>
                 <Table
                     loading={this.props.pricesFetching}
                     rows={this.getRows()}

@@ -8,6 +8,7 @@ export default class extends React.Component {
             <select
                 value={this.props.value ? this.props.value : ''}
                 onChange={(event) => this.props.onChange(event.target.value)}
+                className="form-control"
             >
                 {this.getOptions(this.props.options)}
             </select>
@@ -29,18 +30,24 @@ export default class extends React.Component {
     render () {
         if (this.props.loading && !this.props.options.length) {
             return (
-                <div className="d-flex justify-content-between">
-                    <h2>{this.props.title}</h2>
-                    <Loader></Loader>
+                <div className="row">
+                    <div className="col">
+                        <h2>{this.props.title}</h2>
+                    </div>
+                    <div className="col">
+                        <Loader></Loader>
+                    </div>
                 </div>
             )
         }
 
         if (this.props.loading) {
             return (
-                <div className="d-flex justify-content-between">
-                    <h2>{this.props.title}</h2>
-                    <div>
+                <div className="row">
+                    <div className="col">
+                        <h2>{this.props.title}</h2>
+                    </div>
+                    <div className="col">
                         <Loader></Loader>
                         {this.getSelect()}
                     </div>
@@ -48,9 +55,13 @@ export default class extends React.Component {
             )
         }
         return (
-            <div className="d-flex justify-content-between">
-                <h2>{this.props.title}</h2>
-                {this.getSelect()}
+            <div className="row">
+                <div className="col">
+                    <h2>{this.props.title}</h2>
+                </div>
+                <div className="col">
+                    {this.getSelect()}
+                </div>
             </div>
         )
     }
