@@ -68,6 +68,7 @@ class PriceCard extends React.Component {
                 <Toggle
                     value={this.props.displayValid}
                     onChange={() => this.props.displayValidPrices()}
+                    label='Afficher les prix validés'
                 ></Toggle>
             </Card>
         )

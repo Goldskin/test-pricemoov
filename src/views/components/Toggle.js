@@ -16,7 +16,7 @@ export default class extends React.Component {
                 <label
                     className="custom-control-label"
                     htmlFor={id}
-                >AFficher les prix validés</label>
+                >{this.props.label}</label>
             </div>
         )
     }
