@@ -24,3 +24,12 @@ export const displayValidPrices = (
     meta,
     payload,
 })
+
+export const orderBy = (
+    payload = {},
+    meta = { resolve: () => { }, reject: () => { } }
+) => dispatch => dispatch({
+    type: types.ORDER_BY,
+    meta,
+    payload: { name: null, ...payload },
+})

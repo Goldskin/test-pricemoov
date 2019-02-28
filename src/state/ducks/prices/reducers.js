@@ -13,6 +13,20 @@ const rehydrate = (state, incoming) => ([
     ...incoming,
 ])
 
+const chooseDirection = order => {
+    if (order === false) {
+        return null
+    }
+
+    if (order === true) {
+        return false
+    }
+
+    if (order === null) {
+        return true
+    }
+}
+
 const pricesReducer = (state = [], action) => {
     switch (action.type) {
         case types.FETCH_SUCCEEDED:
@@ -43,10 +57,23 @@ const displayValidReducer = (state = false, action) => {
     }
 }
 
+const orderReducer = (state = {name: null, direction: null}, action) => {
+    switch (action.type) {
+        case types.ORDER_BY:
+            return {
+                name: action.payload.name,
+                direction: action.payload.name === state.name ? chooseDirection(state.direction) : true
+            }
+        default:
+            return state
+    }
+}
+
 const reducer = combineReducers({
     prices: pricesReducer,
     fetching: fetchingReducer,
     displayValid: displayValidReducer,
+    order: orderReducer,
 })
 
 export default reducer

@@ -1,11 +1,12 @@
 import React from 'react'
 import Loader from './loader';
-
+import v4 from 'uuid/v4'
 
 export default class extends React.Component {
-    getSelect () {
+    getSelect (id) {
         return (
             <select
+                id={id}
                 value={this.props.value ? this.props.value : ''}
                 onChange={(event) => this.props.onChange(event.target.value)}
                 className="form-control"
@@ -28,11 +29,12 @@ export default class extends React.Component {
         })
     }
     render () {
+        const id = v4()
         if (this.props.loading && !this.props.options.length) {
             return (
                 <div className="row">
                     <div className="col">
-                        <h2>{this.props.title}</h2>
+                        <label htmlFor={id}>{this.props.title}</label>
                     </div>
                     <div className="col">
                         <Loader></Loader>
@@ -45,11 +47,11 @@ export default class extends React.Component {
             return (
                 <div className="row">
                     <div className="col">
-                        <h2>{this.props.title}</h2>
+                        <label htmlFor={id}>{this.props.title}</label>
                     </div>
                     <div className="col">
                         <Loader></Loader>
-                        {this.getSelect()}
+                        {this.getSelect(id)}
                     </div>
                 </div>
             )
@@ -57,10 +59,10 @@ export default class extends React.Component {
         return (
             <div className="row">
                 <div className="col">
-                    <h2>{this.props.title}</h2>
+                    <label htmlFor={id}>{this.props.title}</label>
                 </div>
                 <div className="col">
-                    {this.getSelect()}
+                    {this.getSelect(id)}
                 </div>
             </div>
         )

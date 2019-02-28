@@ -4,6 +4,7 @@ import Selector from '../components/selector'
 import Table from '../components/table'
 import moment from 'moment'
 import Toggle from './Toggle';
+import buttonOrderPrice from "../containers/buttonOrderPrice";
 
 class PriceCard extends React.Component {
     getOption (options) {
@@ -40,6 +41,15 @@ class PriceCard extends React.Component {
         ]))
     }
 
+    getTableHead () {
+        return [
+            { name: 'Date', value: 'startDate', Component: buttonOrderPrice},
+            { name: 'Prix', value: 'price', Component: buttonOrderPrice },
+            { name: 'Prix suggéré', value: 'suggestedPrice', Component: buttonOrderPrice },
+            { name: 'Validité', value: 'isValidated', Component: buttonOrderPrice },
+        ]
+    }
+
     render () {
         return (
             <Card>
@@ -62,6 +72,7 @@ class PriceCard extends React.Component {
                     />
                 </div>
                 <Table
+                    header={this.getTableHead()}
                     loading={this.props.pricesFetching}
                     rows={this.getRows()}
                 />

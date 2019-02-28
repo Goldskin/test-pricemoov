@@ -46,7 +46,7 @@ const mapDispatchToProps = {
     selectCategoryAction: categoriesActions.selectCategoryAction,
     init: agenciesOperations.fetchAgencyAndCategories,
     fetchPricesAction: pricesActions.fetchPricesAction,
-    displayValidPrices: pricesActions.displayValidPrices
+    displayValidPrices: pricesActions.displayValidPrices,
 }
 
 export default connect(
