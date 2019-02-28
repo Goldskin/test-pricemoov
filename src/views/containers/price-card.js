@@ -19,18 +19,24 @@ const agencies = state => ({
     agency: state.agenciesState.selected,
 })
 
-const prices = state => ({
-    prices: pricesSelectors.getPriceValidPrice(
-        pricesSelectors.getPricesByCategories(
-            state.pricesState.prices,
-            state.categoriesState.selected
-        ),
+const prices = state => {
+    const pricesByCat = pricesSelectors.getPricesByCategories(
+        state.pricesState.prices.sort((price1, price2) => price1.startDate - price2.startDate),
+        state.categoriesState.selected
+    )
+
+    const validPrice = pricesSelectors.getPriceValidPrice(
+        pricesByCat,
         state.pricesState.displayValid
-    ),
-    pricesFetching: state.pricesState.fetching,
-    price: state.pricesState.selected,
-    displayValid: state.pricesState.displayValid
-})
+    )
+
+    return {
+        prices: validPrice,
+        pricesFetching: state.pricesState.fetching,
+        price: state.pricesState.selected,
+        displayValid: state.pricesState.displayValid
+    }
+}
 
 const mapStateToProps = state => ({
     ...agencies(state),
