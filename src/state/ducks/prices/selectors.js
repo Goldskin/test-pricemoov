@@ -17,8 +17,18 @@ const getPriceValidPrice = (prices, filter) =>
         ? prices.filter(price => price.isValidated === true)
         : prices
 
+const orderPriceBy = (prices, order) =>
+    prices.sort(
+        (price1, price2) => order.direction === null
+            ? true
+            : order.direction === true
+                ? price1[order.name] - price2[order.name]
+                : price2[order.name] - price1[order.name]
+    )
+
 export {
     getPrice,
     getPricesByCategories,
     getPriceValidPrice,
+    orderPriceBy,
 }

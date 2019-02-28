@@ -20,8 +20,12 @@ const agencies = state => ({
 })
 
 const prices = state => {
+    const priceOrderedByDate = state.pricesState.prices.sort(
+        (price1, price2) => price1.startDate - price2.startDate
+    )
+
     const pricesByCat = pricesSelectors.getPricesByCategories(
-        state.pricesState.prices.sort((price1, price2) => price1.startDate - price2.startDate),
+        priceOrderedByDate,
         state.categoriesState.selected
     )
 
@@ -30,10 +34,14 @@ const prices = state => {
         state.pricesState.displayValid
     )
 
+    const orderedPrice = pricesSelectors.orderPriceBy(
+        validPrice,
+        state.pricesState.order
+    )
+
     return {
-        prices: validPrice,
+        prices: orderedPrice,
         pricesFetching: state.pricesState.fetching,
-        price: state.pricesState.selected,
         displayValid: state.pricesState.displayValid
     }
 }

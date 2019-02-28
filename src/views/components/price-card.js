@@ -33,7 +33,6 @@ class PriceCard extends React.Component {
     }
 
     getRows () {
-        console.log(this.props.prices)
         return this.props.prices.map(price => ([
             { name: `${this.formatDate(price.startDate)}`, className: `td-black` },
             { name: `Prix: ${price.price}€`, className: `` },
