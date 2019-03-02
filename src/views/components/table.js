@@ -1,6 +1,5 @@
 import React from 'react'
 import Loader from './loader';
-import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -18,9 +17,7 @@ class OrderedTable extends React.Component {
             <TableHead>
                 <TableRow>
                     {this.props.header.map((cell, index) => (
-                        <TableCell align="right" key={index}>
-                            <cell.Component value={cell.value}>{cell.name}</cell.Component>
-                        </TableCell>
+                        <cell.Component value={cell.value} key={index}>{cell.name}</cell.Component>
                     ))}
                 </TableRow>
             </TableHead>
