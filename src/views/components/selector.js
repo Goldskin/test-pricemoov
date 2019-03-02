@@ -1,7 +1,7 @@
 import React from 'react'
 import v4 from 'uuid/v4'
 import Select from '@material-ui/core/Select'
-import { Grid, CircularProgress, MenuItem, InputLabel, OutlinedInput, FormControl } from '@material-ui/core';
+import { Grid, CircularProgress, MenuItem, InputLabel, FormControl } from '@material-ui/core';
 
 
 export default class extends React.Component {
