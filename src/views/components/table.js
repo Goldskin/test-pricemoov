@@ -33,8 +33,8 @@ class OrderedTable extends React.Component {
                             <TableRow key={index}>
                                 {row.map((cell, index) => (
                                     <TableCell
+                                        padding="checkbox"
                                         className={cell.className}
-                                        align="right"
                                         key={index}
                                     >
                                         {cell.name}
