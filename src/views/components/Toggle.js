@@ -1,23 +1,22 @@
 import React from 'react'
-import v4 from 'uuid/v4'
+import Switch from '@material-ui/core/Switch';
+import { FormControlLabel } from '@material-ui/core';
+
 
 export default class extends React.Component {
     render () {
-        const id = v4()
         return (
-            <div className="custom-control custom-switch">
-                <input
-                    type="checkbox"
-                    className="custom-control-input"
-                    id={id}
-                    onChange={event => this.props.onChange(event.target.value)}
-                    checked={this.props.value}
-                />
-                <label
-                    className="custom-control-label"
-                    htmlFor={id}
-                >{this.props.label}</label>
-            </div>
+            <FormControlLabel
+                control={
+                    <Switch
+                        checked={this.props.value}
+                        onChange={event => this.props.onChange(event.target.value)}
+                        value="checkedB"
+                        color="primary"
+                    />
+                }
+                label={this.props.label}
+            />
         )
     }
 }
