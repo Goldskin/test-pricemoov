@@ -1,18 +1,19 @@
 import React from 'react'
 import Loader from './loader';
 import v4 from 'uuid/v4'
+import Select from '@material-ui/core/Select'
+import { FormLabel, Grid } from '@material-ui/core';
+
 
 export default class extends React.Component {
     getSelect (id) {
         return (
-            <select
+            <Select
                 id={id}
+                children={this.getOptions(this.props.options)}
                 value={this.props.value ? this.props.value : ''}
                 onChange={(event) => this.props.onChange(event.target.value)}
-                className="form-control"
-            >
-                {this.getOptions(this.props.options)}
-            </select>
+            />
         )
     }
 
@@ -32,39 +33,43 @@ export default class extends React.Component {
         const id = v4()
         if (this.props.loading && !this.props.options.length) {
             return (
-                <div className="row">
-                    <div className="col">
-                        <label htmlFor={id}>{this.props.title}</label>
-                    </div>
-                    <div className="col">
-                        <Loader></Loader>
-                    </div>
-                </div>
+                <Grid
+                    container
+                    direction="row"
+                    justify="space-between"
+                    alignItems="flex-start"
+                >
+                    <FormLabel>{this.props.title}</FormLabel>
+                    <Loader></Loader>
+                </Grid>
             )
         }
 
         if (this.props.loading) {
             return (
-                <div className="row">
-                    <div className="col">
-                        <label htmlFor={id}>{this.props.title}</label>
-                    </div>
-                    <div className="col">
-                        <Loader></Loader>
-                        {this.getSelect(id)}
-                    </div>
-                </div>
+                <Grid
+                    container
+                    direction="row"
+                    justify="space-between"
+                    alignItems="flex-start"
+                >
+                    <FormLabel htmlFor={id}>{this.props.title}</FormLabel>
+                    <Loader></Loader>
+                    {this.getSelect(id)}
+                </Grid>
             )
         }
+
         return (
-            <div className="row">
-                <div className="col">
-                    <label htmlFor={id}>{this.props.title}</label>
-                </div>
-                <div className="col">
-                    {this.getSelect(id)}
-                </div>
-            </div>
+            <Grid
+                    container
+                    direction="row"
+                    justify="space-between"
+                    alignItems="flex-start"
+                >
+                <FormLabel htmlFor={id}>{this.props.title}</FormLabel>
+                {this.getSelect(id)}
+            </Grid>
         )
     }
 }
