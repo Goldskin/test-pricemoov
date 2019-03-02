@@ -6,13 +6,17 @@ import { FormLabel, Grid } from '@material-ui/core';
 
 
 export default class extends React.Component {
-    getSelect (id) {
+    getSelect (id, title) {
         return (
             <Select
                 id={id}
                 children={this.getOptions(this.props.options)}
                 value={this.props.value ? this.props.value : ''}
                 onChange={(event) => this.props.onChange(event.target.value)}
+                inputProps={{
+                    name: this.props.title,
+                    id,
+                }}
             />
         )
     }
