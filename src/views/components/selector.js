@@ -1,23 +1,39 @@
 import React from 'react'
 import v4 from 'uuid/v4'
 import Select from '@material-ui/core/Select'
-import { Grid, CircularProgress, MenuItem, InputLabel } from '@material-ui/core';
+import { Grid, CircularProgress, MenuItem, InputLabel, OutlinedInput, FormControl } from '@material-ui/core';
 
 
 export default class extends React.Component {
-    getSelect (id) {
+    getSelect () {
+        // return (
+        //     <Select
+        //         id={id}
+        //         value={this.props.value ? this.props.value : ''}
+        //         onChange={}
+        //         inputProps={{
+        //             name: ,
+        //             id,
+        //         }}
+        //     >
+        //         {this.getOptions(this.props.options)}
+        //     </Select>
+        // )
+        const id = v4()
         return (
-            <Select
-                id={id}
-                value={this.props.value ? this.props.value : ''}
-                onChange={(event) => this.props.onChange(event.target.value)}
-                inputProps={{
-                    name: this.props.title,
-                    id,
-                }}
-            >
-                {this.getOptions(this.props.options)}
-            </Select>
+            <FormControl>
+                <InputLabel
+                    htmlFor={id}
+                >
+                    {this.props.title}
+                </InputLabel>
+                <Select
+                    value={this.props.value ? this.props.value : ''}
+                    onChange={(event) => this.props.onChange(event.target.value)}
+                >
+                    {this.getOptions(this.props.options)}
+                </Select>
+            </FormControl>
         )
     }
 
@@ -34,7 +50,7 @@ export default class extends React.Component {
         })
     }
     render () {
-        const id = v4()
+
         if (this.props.loading && !this.props.options.length) {
             return (
                 <Grid
@@ -43,7 +59,7 @@ export default class extends React.Component {
                     justify="space-between"
                     alignItems="flex-start"
                 >
-                    <InputLabel>{this.props.title}</InputLabel>
+                    <h2>{this.props.title}</h2>
                     <CircularProgress />
                 </Grid>
             )
@@ -57,22 +73,22 @@ export default class extends React.Component {
                     justify="space-between"
                     alignItems="flex-start"
                 >
-                    <InputLabel htmlFor={id}>{this.props.title}</InputLabel>
+                    <h2>{this.props.title}</h2>
                     <CircularProgress />
-                    {this.getSelect(id)}
+                    {this.getSelect()}
                 </Grid>
             )
         }
 
         return (
             <Grid
-                    container
-                    direction="row"
-                    justify="space-between"
-                    alignItems="flex-start"
-                >
-                <InputLabel htmlFor={id}>{this.props.title}</InputLabel>
-                {this.getSelect(id)}
+                container
+                direction="row"
+                justify="space-between"
+                alignItems="flex-start"
+            >
+                <h2>{this.props.title}</h2>
+                {this.getSelect()}
             </Grid>
         )
     }
