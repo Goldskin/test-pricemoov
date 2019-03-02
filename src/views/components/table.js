@@ -1,11 +1,11 @@
 import React from 'react'
-import Loader from './loader';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { CircularProgress } from '@material-ui/core';
 
 
 class OrderedTable extends React.Component {
@@ -50,14 +50,14 @@ class OrderedTable extends React.Component {
     render () {
         if (this.props.loading && !this.props.rows.length) {
             return (
-                <Loader></Loader>
+                <CircularProgress />
             )
         }
 
         if (this.props.loading) {
             return (
                 <>
-                    <Loader></Loader>
+                    <CircularProgress />
                     {this.getTables()}
                 </>
             )
