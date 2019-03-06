@@ -6,7 +6,7 @@ import App from "./views/App"
 import "./index.css"
 import { Grid } from "@material-ui/core";
 
-const reduxStore = configureStore(window.REDUX_INITIAL_DATA)
+const reduxStore = configureStore()
 
 ReactDOM.render(
   <ReduxProvider store={reduxStore}>
